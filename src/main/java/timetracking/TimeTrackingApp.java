@@ -1,12 +1,11 @@
 package timetracking;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableAutoConfiguration
+@SpringBootApplication
 public class TimeTrackingApp {
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(TimeTrackingApp.class, args);
     }
 }
