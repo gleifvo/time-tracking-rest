@@ -1,8 +1,11 @@
 package timetracking.dao.models;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class User {
 
     @Id
@@ -20,28 +23,4 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "user_type_id", referencedColumnName = "id")
     private UserType userType;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public UserType getUserType() {
-        return userType;
-    }
 }

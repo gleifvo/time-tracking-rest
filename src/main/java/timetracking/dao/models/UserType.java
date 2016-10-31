@@ -1,11 +1,14 @@
 package timetracking.dao.models;
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Getter
 public class UserType {
 
     @Id
@@ -13,12 +16,4 @@ public class UserType {
     private Long id;
 
     private String roleName;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
 }
