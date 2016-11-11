@@ -1,19 +1,15 @@
 package timetracking.dao.models;
 
 import lombok.Getter;
+import timetracking.dao.models.absctract.AbstractEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 @Getter
-public class UserType {
+public class UserType extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @Column(nullable = false)
     private String roleName;
 }
