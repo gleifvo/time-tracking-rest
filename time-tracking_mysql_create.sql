@@ -71,7 +71,3 @@ ALTER TABLE `user_projects`
 
 ALTER TABLE `user_projects`
   ADD CONSTRAINT `user_projects_fk1` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`);
-
-INSERT INTO `user_type` (role_name) VALUES ('test');
-INSERT INTO `user` (first_name, last_name, login, password, user_type_id)
-  VALUES ('test', 'test', 'test', 'test', 1);
