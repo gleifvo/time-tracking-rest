@@ -19,7 +19,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_type` (
   `id`        BIGINT      NOT NULL AUTO_INCREMENT,
-  `role_name` VARCHAR(20) NOT NULL,
+  `role_name` VARCHAR(20) NOT NULL UNIQUE,
   PRIMARY KEY (`id`)
 );
 

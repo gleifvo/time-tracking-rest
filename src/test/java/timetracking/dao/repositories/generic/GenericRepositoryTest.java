@@ -1,6 +1,8 @@
 package timetracking.dao.repositories.generic;
 
 
+import io.github.benas.randombeans.EnhancedRandomBuilder;
+import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,18 @@ public abstract class GenericRepositoryTest<REPOSITORY extends CrudRepository<EN
     @Autowired
     protected REPOSITORY repository;
 
+    protected EnhancedRandom fabric = createFabric();
+
     @Test
-    public void shouldBeSave() throws Exception {
+    public void shouldSaveEntity() throws Exception {
         ENTITY entity = getEntity();
         assertEquals(entity, repository.save(entity));
+    }
+
+    protected EnhancedRandom createFabric() {
+        return EnhancedRandomBuilder.aNewEnhancedRandomBuilder()
+                .maxStringLength(20)
+                .build();
     }
 
     protected abstract ENTITY getEntity();

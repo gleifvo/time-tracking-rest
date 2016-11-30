@@ -22,6 +22,6 @@ public class UserController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
     public User test() {
-        return userRepository.findByFirstName("test");
+        return userRepository.findByLogin("login");
     }
 }

@@ -14,6 +14,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class UserType extends AbstractEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String roleName;
 }

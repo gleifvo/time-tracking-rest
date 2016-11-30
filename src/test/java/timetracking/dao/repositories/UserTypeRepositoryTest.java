@@ -1,5 +1,7 @@
 package timetracking.dao.repositories;
 
+import org.junit.Test;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import timetracking.dao.models.UserType;
@@ -13,8 +15,13 @@ import timetracking.dao.repositories.generic.GenericRepositoryTest;
 })
 public class UserTypeRepositoryTest extends GenericRepositoryTest<UserTypeRepository, UserType> {
 
+    @Test(expected = DataIntegrityViolationException.class)
+    public void shouldNotSaveTypeDuplicate() throws Exception {
+        repository.save(new UserType("userType"));
+    }
+
     @Override
     protected UserType getEntity() {
-        return new UserType("newUserType");
+        return fabric.nextObject(UserType.class);
     }
 }

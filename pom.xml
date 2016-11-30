@@ -45,6 +45,11 @@
             <version>1.16.10</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.github.benas</groupId>
+            <artifactId>random-beans</artifactId>
+            <version>3.4.0</version>
+        </dependency>
 
         <!-- Tests -->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
