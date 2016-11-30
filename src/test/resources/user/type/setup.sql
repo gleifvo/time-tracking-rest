@@ -1,0 +1,1 @@
+INSERT INTO `user_type` VALUES (1,'userType');

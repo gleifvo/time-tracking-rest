@@ -3,29 +3,26 @@ package timetracking.dao.repositories;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
-import org.springframework.test.context.junit4.SpringRunner;
 import timetracking.dao.models.User;
 import timetracking.dao.models.UserType;
+import timetracking.dao.repositories.generic.GenericRepositoryTest;
+import timetracking.utils.Constants;
 import timetracking.utils.TestUtils;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@SqlGroup({
-        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:users_setup.sql"),
-        @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:users_cleanup.sql")
-})
-public class UserRepositoryTest {
 
-    @Autowired
-    private UserRepository userRepository;
+@SqlGroup({
+        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = Constants.PATH_TO_USER_TYPE_SETUP_SCRIPT),
+        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = Constants.PATH_TO_USER_SETUP_SCRIPT),
+
+        @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = Constants.PATH_TO_USER_CLEANUP_SCRIPT),
+        @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = Constants.PATH_TO_USER_TYPE__CLEANUP_SCRIPT)
+})
+public class UserRepositoryTest extends GenericRepositoryTest<UserRepository, User> {
 
     private UserType userType;
 
@@ -37,20 +34,18 @@ public class UserRepositoryTest {
 
     @Test
     public void findByName() {
-        assertEquals(userRepository.findByFirstName("firstName").getId().longValue(), 1L);
+        assertEquals(repository.findByFirstName("firstName").getId().longValue(), 1L);
     }
 
     @Test(expected = DataIntegrityViolationException.class)
     public void insertWithSameLogin() throws Exception {
         User user = new User("firstName", "lastName", "login", "password", userType);
 
-        userRepository.save(user);
+        repository.save(user);
     }
 
-    @Test
-    public void shouldBeSaveUser() throws Exception {
-        User user = new User("firstName", "lastName", "uniqueLogin", "password", userType);
-        
-        assertEquals(userRepository.save(user), user);
+    @Override
+    protected User getEntity() {
+        return new User("firstName", "lastName", "uniqueLogin", "password", userType);
     }
 }
