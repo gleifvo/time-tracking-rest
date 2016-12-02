@@ -10,8 +10,6 @@ import timetracking.dao.repositories.generic.GenericRepositoryTest;
 
 @SqlGroup({
         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:user/type/setup.sql"),
-
-        @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:user/type/cleanup.sql")
 })
 public class UserTypeRepositoryTest extends GenericRepositoryTest<UserTypeRepository, UserType> {
 
@@ -22,6 +20,6 @@ public class UserTypeRepositoryTest extends GenericRepositoryTest<UserTypeReposi
 
     @Override
     protected UserType getEntity() {
-        return fabric.nextObject(UserType.class);
+        return fabric.generateEntity(UserType.class);
     }
 }
