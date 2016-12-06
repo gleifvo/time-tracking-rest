@@ -1,0 +1,1 @@
+INSERT INTO `project` VALUES (1,'name', 1);
