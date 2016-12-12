@@ -1,6 +1,6 @@
 package timetracking.utils;
 
-import timetracking.dao.models.absctract.AbstractEntity;
+import timetracking.dao.models.AbstractEntity;
 
 import java.lang.reflect.Field;
 

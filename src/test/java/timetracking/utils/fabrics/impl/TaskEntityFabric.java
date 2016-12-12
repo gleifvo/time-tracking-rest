@@ -6,27 +6,29 @@ import io.github.benas.randombeans.api.EnhancedRandom;
 import io.github.benas.randombeans.api.Randomizer;
 import org.springframework.stereotype.Service;
 import timetracking.dao.models.Project;
+import timetracking.dao.models.Task;
 import timetracking.dao.models.User;
 import timetracking.utils.TestUtils;
 import timetracking.utils.fabrics.EntityFabric;
 
-@Service("projectEntityFabric")
-public class ProjectEntityFabric extends UserEntityFabric implements EntityFabric {
+@Service("taskEntityFabric")
+public class TaskEntityFabric extends ProjectEntityFabric implements EntityFabric {
 
-    protected User user;
+    private Project project;
 
     @Override
     public void init() throws Exception {
-        user = new User();
-        TestUtils.setId(user, 1L);
+        project = new Project();
+        TestUtils.setId(project, 1L);
         super.init();
     }
 
     @Override
     protected EnhancedRandom createFabric() {
         return EnhancedRandomBuilder.aNewEnhancedRandomBuilder()
-                .randomize(FieldDefinitionBuilder.field().named("user").ofType(User.class).inClass(Project.class).get(), (Randomizer<User>) () -> user)
-                .maxStringLength(40)
+                .randomize(FieldDefinitionBuilder.field().named("user").ofType(User.class).inClass(Task.class).get(), (Randomizer<User>) () -> user)
+                .randomize(FieldDefinitionBuilder.field().named("project").ofType(Project.class).inClass(Task.class).get(), (Randomizer<Project>) () -> project)
+                .maxStringLength(200)
                 .build();
     }
 }

@@ -13,7 +13,7 @@ import timetracking.utils.fabrics.EntityFabric;
 @Service("userEntityFabric")
 public class UserEntityFabric extends EntityFabricImpl implements EntityFabric {
 
-    private UserType userType;
+    protected UserType userType;
 
     @Override
     public void init() throws Exception {

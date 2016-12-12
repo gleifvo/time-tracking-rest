@@ -1,4 +1,4 @@
-package timetracking.dao.models.absctract;
+package timetracking.dao.models;
 
 
 import io.github.benas.randombeans.annotation.Exclude;

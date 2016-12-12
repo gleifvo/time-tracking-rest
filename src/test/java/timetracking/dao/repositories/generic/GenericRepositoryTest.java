@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import timetracking.dao.models.absctract.AbstractEntity;
+import timetracking.dao.models.AbstractEntity;
 import timetracking.utils.fabrics.EntityFabric;
 
 import static org.junit.Assert.assertEquals;

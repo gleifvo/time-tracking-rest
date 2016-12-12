@@ -3,7 +3,7 @@ package timetracking.utils.fabrics.impl;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.springframework.stereotype.Service;
-import timetracking.dao.models.absctract.AbstractEntity;
+import timetracking.dao.models.AbstractEntity;
 import timetracking.utils.fabrics.EntityFabric;
 
 import javax.annotation.PostConstruct;
