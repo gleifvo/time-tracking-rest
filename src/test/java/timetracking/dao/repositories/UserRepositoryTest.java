@@ -12,6 +12,8 @@ import timetracking.dao.repositories.generic.GenericRepositoryTest;
 import timetracking.utils.Constants;
 import timetracking.utils.fabrics.EntityFabric;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -32,7 +34,7 @@ public class UserRepositoryTest extends GenericRepositoryTest<UserRepository, Us
 
     @Test(expected = DataIntegrityViolationException.class)
     public void shouldNotSaveLoginDuplicate() throws Exception {
-        repository.save(new User("firstName", "lastName", "login", "password", this.getEntity().getUserType()));
+        repository.save(new User("firstName", "lastName", "login", "password", this.getEntity().getUserType(), new ArrayList<>()));
     }
 
     @Override
