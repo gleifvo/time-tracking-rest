@@ -1,7 +1,7 @@
 package timetracking.dao.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import timetracking.dao.models.UserType;
 
-public interface UserTypeRepository extends CrudRepository<UserType, Long> {
+public interface UserTypeRepository extends PagingAndSortingRepository<UserType, Long> {
 }
