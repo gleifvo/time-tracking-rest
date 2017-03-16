@@ -29,5 +29,6 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-test'
     compile 'mysql:mysql-connector-java:5.1.39'
     compile 'io.github.benas:random-beans:3.4.0'
+    compile "org.flywaydb:flyway-core:4.1.2"
     testCompile 'junit:junit:4.12'
 }
