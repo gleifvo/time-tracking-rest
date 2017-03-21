@@ -15,4 +15,5 @@ public class UserType extends AbstractEntity {
 
     @Column(nullable = false, unique = true)
     private String roleName;
+
 }

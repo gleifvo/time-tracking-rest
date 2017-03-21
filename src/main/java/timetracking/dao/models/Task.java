@@ -21,4 +21,5 @@ public class Task extends AbstractEntity {
 
     @Column(nullable = false)
     private String description;
+
 }

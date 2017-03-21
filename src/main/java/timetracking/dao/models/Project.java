@@ -22,4 +22,5 @@ public class Project extends AbstractEntity {
     @JoinTable(name = "user_projects", joinColumns = {@JoinColumn(name = "project_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<User> users;
+
 }

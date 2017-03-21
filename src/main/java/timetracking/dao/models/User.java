@@ -36,4 +36,5 @@ public class User extends AbstractEntity {
     @JoinTable(name = "user_2task", joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "task_id")})
     private List<Task> tasks;
+
 }
