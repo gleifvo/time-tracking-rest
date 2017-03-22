@@ -25,9 +25,10 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(path ->
                         Optional.ofNullable(path)
-                                .map(value -> value.matches("/api/.*")
-                                        && !value.matches("/api/profile.*")
-                                        && !value.matches("/api/")
+                                .map(value ->
+                                        value.matches("/api/.*")
+                                                && !value.matches("/api/profile.*")
+                                                && !value.matches("/api/")
                                 )
                                 .orElse(false)
                 )
