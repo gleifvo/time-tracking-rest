@@ -2,17 +2,21 @@ package timetracking.dao.models;
 
 import io.github.benas.randombeans.annotation.Exclude;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
 
 
+@Data
 @Entity
-@Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 public class User extends AbstractEntity {
 
     @Column(nullable = false)
@@ -27,12 +31,12 @@ public class User extends AbstractEntity {
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_type_id", referencedColumnName = "id")
+    @Column
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     @Exclude
-    @ManyToMany(targetEntity = Task.class, cascade = {CascadeType.ALL})
+    @ManyToMany(targetEntity = Task.class, cascade = CascadeType.ALL)
     @JoinTable(name = "user_2task", joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "task_id")})
     private List<Task> tasks;

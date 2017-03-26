@@ -1,19 +1,27 @@
 package timetracking.dao.models;
 
 import io.github.benas.randombeans.annotation.Exclude;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
-@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 public class Project extends AbstractEntity {
 
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_creator_id", referencedColumnName = "id")
     private User user;
 

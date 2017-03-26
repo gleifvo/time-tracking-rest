@@ -1,1 +1,0 @@
-INSERT INTO `user` VALUES (1,'firstName', 'lastName', 'login', 'password', 1);
