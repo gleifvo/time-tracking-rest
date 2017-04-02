@@ -14,11 +14,11 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 public class Task extends AbstractEntity {
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private Project project;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_creator_id", referencedColumnName = "id")
     private User user;
 

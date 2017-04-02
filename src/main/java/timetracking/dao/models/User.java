@@ -34,7 +34,7 @@ public class User extends AbstractEntity {
     private UserType userType;
 
     @Exclude
-    @ManyToMany(targetEntity = Task.class, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Task.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user_2task", joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "task_id")})
     private List<Task> tasks;
