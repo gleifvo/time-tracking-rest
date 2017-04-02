@@ -1,6 +1,7 @@
 ext {
     springVersion = "1.5.2.RELEASE"
     foxVersion = "2.6.1"
+    securityVersion = "4.2.2.RELEASE"
 }
 
 buildscript {
@@ -8,7 +9,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
     }
 }
 
@@ -30,6 +31,9 @@ dependencies {
     compile "mysql:mysql-connector-java:5.1.39"
     compile "io.github.benas:random-beans:3.6.0"
     compile "org.flywaydb:flyway-core:4.1.2"
+
+    compile "org.springframework.security:spring-security-web:${securityVersion}"
+    compile "org.springframework.security:spring-security-config:${securityVersion}"
 
     compile "org.springframework.boot:spring-boot-starter-web:${springVersion}"
     compile "org.springframework.boot:spring-boot-starter-data-rest:${springVersion}"
