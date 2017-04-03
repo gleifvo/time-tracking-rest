@@ -34,6 +34,7 @@ dependencies {
 
     compile "org.springframework.security:spring-security-web:${securityVersion}"
     compile "org.springframework.security:spring-security-config:${securityVersion}"
+    compile "org.springframework.security:spring-security-test:${securityVersion}"
 
     compile "org.springframework.boot:spring-boot-starter-web:${springVersion}"
     compile "org.springframework.boot:spring-boot-starter-data-rest:${springVersion}"
