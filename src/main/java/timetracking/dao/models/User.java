@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
+@Table(name = "user_info")
 public class User extends AbstractEntity {
 
     @Column(nullable = false)
