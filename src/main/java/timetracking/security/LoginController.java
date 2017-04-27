@@ -44,6 +44,6 @@ public class LoginController {
                 })
                 .orElse(HttpStatus.UNAUTHORIZED);
 
-        return new ResponseEntity(httpStatus);
+        return new ResponseEntity<>(user, httpStatus);
     }
 }

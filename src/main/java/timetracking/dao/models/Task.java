@@ -1,5 +1,6 @@
 package timetracking.dao.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Task extends AbstractEntity {
 
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_creator_id", referencedColumnName = "id")
+    @JsonBackReference
     private User user;
 
     @Column(nullable = false)
