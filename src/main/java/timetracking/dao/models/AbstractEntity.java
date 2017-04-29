@@ -17,7 +17,7 @@ public abstract class AbstractEntity {
     @Id
     @Exclude
     @Column(nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
 }
