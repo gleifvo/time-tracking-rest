@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
-@WithMockUser(roles = {"ADMIN"})
+@WithMockUser(authorities = {"ADMIN"})
 public abstract class GenericRepositoryTest<REPOSITORY extends CrudRepository<ENTITY, Long>, ENTITY extends AbstractEntity> {
 
     @Autowired
