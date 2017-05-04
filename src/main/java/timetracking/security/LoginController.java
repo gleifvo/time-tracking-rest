@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/login")
+@RequestMapping(path = "/api/login")
 public class LoginController {
 
     private final UserRepository userRepository;

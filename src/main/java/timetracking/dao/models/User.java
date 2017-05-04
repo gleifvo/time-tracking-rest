@@ -1,7 +1,7 @@
 package timetracking.dao.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.benas.randombeans.annotation.Exclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,7 +30,7 @@ public class User extends AbstractEntity {
     private String login;
 
     @Column(nullable = false)
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Column
@@ -43,5 +43,4 @@ public class User extends AbstractEntity {
             inverseJoinColumns = {@JoinColumn(name = "task_id")})
     @JsonBackReference
     private List<Task> tasks;
-
 }
