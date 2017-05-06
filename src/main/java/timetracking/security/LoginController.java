@@ -1,12 +1,13 @@
 package timetracking.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import timetracking.dao.models.User;
 import timetracking.dao.repositories.UserRepository;
 import timetracking.security.configurations.JwtTokenConfiguration;
@@ -16,7 +17,7 @@ import timetracking.security.service.JwtTokenService;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
-@RestController
+@RepositoryRestController
 @RequestMapping(path = "/api/login")
 public class LoginController {
 
@@ -25,14 +26,15 @@ public class LoginController {
     private final JwtTokenConfiguration tokenConfiguration;
 
     @Autowired
-    public LoginController(UserRepository userRepository, JwtTokenService jwtTokenService, JwtTokenConfiguration tokenConfiguration) {
+    public LoginController(UserRepository userRepository, JwtTokenService jwtTokenService,
+                           JwtTokenConfiguration tokenConfiguration) {
         this.userRepository = userRepository;
         this.jwtTokenService = jwtTokenService;
         this.tokenConfiguration = tokenConfiguration;
     }
 
     @PostMapping
-    public ResponseEntity login(@RequestBody LoginCredentials credentials, HttpServletResponse response) {
+    public ResponseEntity login(@RequestBody LoginCredentials credentials, HttpServletResponse response, PersistentEntityResourceAssembler resourceAssembler) {
         User user = userRepository.findByLogin(credentials.getLogin());
 
         HttpStatus httpStatus = Optional.ofNullable(user)
@@ -44,6 +46,6 @@ public class LoginController {
                 })
                 .orElse(HttpStatus.UNAUTHORIZED);
 
-        return new ResponseEntity<>(user, httpStatus);
+        return new ResponseEntity<>(resourceAssembler.toResource(user), httpStatus);
     }
 }
