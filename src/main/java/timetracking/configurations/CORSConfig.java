@@ -24,7 +24,8 @@ public class CORSConfig extends RepositoryRestConfigurerAdapter {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.getCorsRegistry()
                 .addMapping("/**")
-                .exposedHeaders(jwtTokenConfiguration.getName());
+                .exposedHeaders(jwtTokenConfiguration.getName())
+                .allowedMethods("*");
     }
 
     @Bean
@@ -34,7 +35,8 @@ public class CORSConfig extends RepositoryRestConfigurerAdapter {
             public void addCorsMappings(CorsRegistry registry) {
                 registry
                         .addMapping("/**")
-                        .exposedHeaders(jwtTokenConfiguration.getName());
+                        .exposedHeaders(jwtTokenConfiguration.getName())
+                        .allowedMethods("*");
             }
         };
     }
