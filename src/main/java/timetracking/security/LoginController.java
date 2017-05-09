@@ -37,15 +37,13 @@ public class LoginController {
     public ResponseEntity login(@RequestBody LoginCredentials credentials, HttpServletResponse response, PersistentEntityResourceAssembler resourceAssembler) {
         User user = userRepository.findByLogin(credentials.getLogin());
 
-        HttpStatus httpStatus = Optional.ofNullable(user)
+        return Optional.ofNullable(user)
                 .filter(usr -> usr.getPassword().equals(credentials.getPassword()))
                 .map(usr -> {
                     String token = jwtTokenService.createToken(usr.getLogin(), usr.getId(), user.getUserType().name());
                     response.setHeader(tokenConfiguration.getName(), token);
-                    return HttpStatus.OK;
+                    return new ResponseEntity<>(resourceAssembler.toResource(user), HttpStatus.OK);
                 })
-                .orElse(HttpStatus.UNAUTHORIZED);
-
-        return new ResponseEntity<>(resourceAssembler.toResource(user), httpStatus);
+                .orElse(new ResponseEntity<>(HttpStatus.UNAUTHORIZED));
     }
 }
