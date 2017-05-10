@@ -43,4 +43,9 @@ public class User extends AbstractEntity {
             inverseJoinColumns = {@JoinColumn(name = "task_id")})
     @JsonBackReference
     private List<Task> tasks;
+
+    //TODO: Temporary workaround
+    public User(String reference) {
+
+    }
 }
