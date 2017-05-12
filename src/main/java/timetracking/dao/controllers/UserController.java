@@ -10,22 +10,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import timetracking.dao.repositories.ProjectRepository;
+import timetracking.dao.repositories.UserRepository;
 
 @RestController
-@RequestMapping("/api/projects/")
-public class ProjectController {
+@RequestMapping("/api/users/")
+public class UserController {
 
-    private final ProjectRepository projectRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public ProjectController(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "/search/existsByName", method = RequestMethod.GET)
-    public ResponseEntity existByName(@Param("name") String name) {
+    @RequestMapping(value = "/search/existsByLogin", method = RequestMethod.GET)
+    public ResponseEntity savePerson(@Param("login") String login) {
         ObjectNode json = JsonNodeFactory.instance.objectNode();
-        json.put("isExist", projectRepository.existsByName(name));
+        json.put("isExist", userRepository.existsByLogin(login));
 
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
