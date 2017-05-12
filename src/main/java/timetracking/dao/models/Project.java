@@ -29,4 +29,9 @@ public class Project extends AbstractEntity {
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<User> users;
 
+    @Exclude
+    @OneToMany(targetEntity = Task.class)
+    @JoinColumn(name = "project_id")
+    private List<Task> tasks;
+
 }
