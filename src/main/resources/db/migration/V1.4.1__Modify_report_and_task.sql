@@ -1,0 +1,11 @@
+ALTER TABLE user_2task
+  RENAME TO report;
+
+ALTER TABLE task
+  ALTER COLUMN description TYPE VARCHAR(200);
+
+DELETE FROM task;
+
+ALTER TABLE task
+  ADD COLUMN name VARCHAR(40) NOT NULL DEFAULT '',
+  ADD CONSTRAINT task_name UNIQUE (name);

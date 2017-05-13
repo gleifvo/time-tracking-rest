@@ -13,8 +13,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "user_2task")
-public class UserTask extends AbstractEntity implements Serializable {
+@Table(name = "report")
+public class Report extends AbstractEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)

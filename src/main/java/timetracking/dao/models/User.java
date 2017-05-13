@@ -39,9 +39,9 @@ public class User extends AbstractEntity {
 
     @Exclude
     @JsonBackReference
-    @OneToMany(targetEntity = UserTask.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(targetEntity = Report.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
-    private List<UserTask> tasks;
+    private List<Report> reports;
 
     //TODO: Temporary workaround
     public User(String reference) {
