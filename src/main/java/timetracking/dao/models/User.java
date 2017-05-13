@@ -3,20 +3,20 @@ package timetracking.dao.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.benas.randombeans.annotation.Exclude;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
 
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Accessors(chain = true)
-@EqualsAndHashCode(callSuper = true)
 @Table(name = "user_info")
 public class User extends AbstractEntity {
 
@@ -39,7 +39,7 @@ public class User extends AbstractEntity {
 
     @Exclude
     @JsonBackReference
-    @OneToMany(targetEntity = Report.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(targetEntity = Report.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "user_id")
     private List<Report> reports;
 

@@ -16,6 +16,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     User findByLogin(@Param("login") String login);
 
     @Override
+    @PreAuthorize("isAuthenticated()")
     @PostAuthorize("returnObject.login == principal.login or hasAuthority('ADMIN')")
     User findOne(Long id);
 

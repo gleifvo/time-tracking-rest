@@ -1,15 +1,14 @@
 package timetracking.dao.models;
 
 import io.github.benas.randombeans.annotation.Exclude;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Accessors(chain = true)
@@ -30,8 +29,7 @@ public class Project extends AbstractEntity {
     private List<User> users;
 
     @Exclude
-    @OneToMany(targetEntity = Task.class)
-    @JoinColumn(name = "project_id")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
 }

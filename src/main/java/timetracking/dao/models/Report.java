@@ -1,18 +1,18 @@
 package timetracking.dao.models;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Accessors(chain = true)
-@EqualsAndHashCode(callSuper = true)
 @Table(name = "report")
 public class Report extends AbstractEntity implements Serializable {
 

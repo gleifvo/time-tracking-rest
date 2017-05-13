@@ -9,23 +9,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import timetracking.dao.repositories.UserRepository;
+import timetracking.dao.repositories.TaskRepository;
 
 @RestController
-@RequestMapping("/api/users/")
-public class UserController {
+@RequestMapping("/api/tasks/")
+public class TaskController {
 
-    private final UserRepository userRepository;
+    private final TaskRepository taskRepository;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public TaskController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
     }
 
-    @RequestMapping(value = "/search/existsByLogin", method = RequestMethod.GET)
-    public ResponseEntity existByLogin(@Param("login") String login) {
+    @RequestMapping(value = "/search/existsByName", method = RequestMethod.GET)
+    public ResponseEntity existByName(@Param("name") String name) {
         ObjectNode json = JsonNodeFactory.instance.objectNode();
-        json.put("isExist", userRepository.existsByLogin(login));
+        json.put("isExist", taskRepository.existsByName(name));
 
         return new ResponseEntity<>(json, HttpStatus.OK);
     }

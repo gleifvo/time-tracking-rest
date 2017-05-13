@@ -1,15 +1,14 @@
-ext {
-    springVersion = "1.5.2.RELEASE"
-    foxVersion = "2.6.1"
-    securityVersion = "4.2.2.RELEASE"
-}
-
 buildscript {
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+        foxVersion = "2.6.1"
+        securityVersion = "4.2.2.RELEASE"
+    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
     }
 }
 
@@ -39,14 +38,12 @@ dependencies {
     compile 'com.auth0:java-jwt:3.1.0'
     compile 'io.jsonwebtoken:jjwt:0.7.0'
 
-    compile "org.springframework.security:spring-security-web:${securityVersion}"
-    compile "org.springframework.security:spring-security-config:${securityVersion}"
-    compile "org.springframework.security:spring-security-test:${securityVersion}"
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testCompile "org.springframework.security:spring-security-test:${securityVersion}"
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 
-    compile "org.springframework.boot:spring-boot-starter-web:${springVersion}"
-    compile "org.springframework.boot:spring-boot-starter-data-rest:${springVersion}"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}"
-    compile "org.springframework.boot:spring-boot-starter-test:${springVersion}"
 
     compile "io.springfox:springfox-swagger2:${foxVersion}"
     compile "io.springfox:springfox-data-rest:${foxVersion}"

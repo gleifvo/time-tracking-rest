@@ -1,0 +1,5 @@
+ALTER TABLE report
+  ADD CONSTRAINT user_fk FOREIGN KEY ("user_id") REFERENCES "user_info" ("id")
+ON DELETE CASCADE,
+  ADD CONSTRAINT task_fk FOREIGN KEY ("task_id") REFERENCES "task" ("id")
+ON DELETE CASCADE;
