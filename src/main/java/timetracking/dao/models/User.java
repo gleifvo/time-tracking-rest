@@ -39,8 +39,7 @@ public class User extends AbstractEntity {
 
     @Exclude
     @JsonBackReference
-    @OneToMany(targetEntity = Report.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Report> reports;
 
     //TODO: Temporary workaround

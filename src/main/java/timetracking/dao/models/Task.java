@@ -17,11 +17,11 @@ import java.util.List;
 @Accessors(chain = true)
 public class Task extends AbstractEntity {
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private Project project;
 
-    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_creator_id", referencedColumnName = "id")
     @JsonBackReference
     private User user;
@@ -33,9 +33,7 @@ public class Task extends AbstractEntity {
     private String name;
 
     @Exclude
-    @OneToMany(targetEntity = Report.class,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "task_id")
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<Report> reports;
 
 }

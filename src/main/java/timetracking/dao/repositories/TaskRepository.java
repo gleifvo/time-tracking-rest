@@ -15,7 +15,7 @@ public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
     Boolean existsByName(@Param("name") String name);
 
     @Override
-    @PreAuthorize("@userEvaluator.containsUser(#task.project.users,principal)")
+    @PreAuthorize("@userEvaluator.containsUser(#task.project.users,principal.id)")
     <S extends Task> S save(@P("task") S task);
 
 }
