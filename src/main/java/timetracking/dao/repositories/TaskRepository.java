@@ -18,4 +18,8 @@ public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
     @PreAuthorize("@userEvaluator.containsUser(#task.project.users,principal.id)")
     <S extends Task> S save(@P("task") S task);
 
+    @Override
+    @PreAuthorize("@userEvaluator.containsUser(#task.project.users,principal.id)")
+    void delete(@P("task") Task task);
+
 }
