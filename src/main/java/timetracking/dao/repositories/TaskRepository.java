@@ -9,7 +9,6 @@ import timetracking.dao.models.Task;
 import timetracking.dao.models.projections.TaskPlusUser;
 
 @PreAuthorize("isAuthenticated()")
-@RepositoryRestResource(excerptProjection = TaskPlusUser.class)
 public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
 
     Boolean existsByName(@Param("name") String name);
