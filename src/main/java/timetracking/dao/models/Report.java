@@ -16,11 +16,11 @@ import java.io.Serializable;
 @Table(name = "report")
 public class Report extends AbstractEntity implements Serializable {
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "task_id", referencedColumnName = "id", nullable = false)
     private Task task;
 

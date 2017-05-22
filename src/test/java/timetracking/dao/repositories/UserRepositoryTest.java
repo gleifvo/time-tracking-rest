@@ -12,17 +12,17 @@ public class UserRepositoryTest extends GenericRepositoryTest<UserRepository, Us
 
     @Test
     public void shouldFindByLogin() {
-        User entity = this.getEntity();
+        User entity = this.createEntity();
         repository.save(entity);
         assertEquals(repository.findByLogin(entity.getLogin()), entity);
     }
 
     @Test(expected = DataIntegrityViolationException.class)
     public void shouldNotSaveLoginDuplicate() throws Exception {
-        User entity = this.getEntity();
+        User entity = this.createEntity();
 
         repository.save(entity);
-        repository.save(getEntity().setLogin(entity.getLogin()));
+        repository.save(createEntity().setLogin(entity.getLogin()));
     }
 
 }
