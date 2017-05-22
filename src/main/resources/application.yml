@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/time_tracking
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+  data:
+    rest:
+      base-path: /api
+jwt:
+  token:
+    key: m1a7s8W3dJn4T6FchG5kO7huNXkKz5GJfzqzqscP7H8=
+    name: token
