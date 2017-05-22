@@ -33,6 +33,7 @@ public abstract class GenericRepositoryTest<REPOSITORY extends CrudRepository<EN
     @Autowired
     private EntityCreator fabric;
 
+    @SuppressWarnings("unchecked")
     private Class<ENTITY> clazz = (Class<ENTITY>) (
             (ParameterizedType) getClass().getGenericSuperclass()
     ).getActualTypeArguments()[1];
