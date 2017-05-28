@@ -10,7 +10,7 @@ import timetracking.dao.models.Project;
 public interface ProjectRepository extends PagingAndSortingRepository<Project, Long> {
 
     @Override
-    @PreAuthorize("principal.id == #entity.user.id")
+    @PreAuthorize("principal.id == #entity.user.id or hasAuthority('ADMIN')")
     Project save(@P("entity") Project entity);
 
     Boolean existsByName(@Param("name") String name);

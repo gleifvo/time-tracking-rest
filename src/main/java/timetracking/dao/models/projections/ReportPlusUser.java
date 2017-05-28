@@ -15,4 +15,6 @@ public interface ReportPlusUser {
 
     Date getDate();
 
+    String getDescription();
+
 }
