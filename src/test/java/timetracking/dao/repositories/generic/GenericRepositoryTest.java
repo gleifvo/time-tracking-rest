@@ -15,7 +15,8 @@ import timetracking.utils.creators.EntityCreator;
 import javax.persistence.EntityManager;
 import java.lang.reflect.ParameterizedType;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static org.junit.Assert.assertThat;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 
 @RunWith(SpringRunner.class)
@@ -41,7 +42,11 @@ public abstract class GenericRepositoryTest<REPOSITORY extends CrudRepository<EN
     @Test
     public void shouldSaveEntity() throws Exception {
         ENTITY entity = createEntity();
-        assertEquals(entity, repository.save(entity));
+
+        repository.save(entity);
+        ENTITY persistent = repository.findOne(entity.getId());
+
+        assertThat(entity, samePropertyValuesAs(persistent));
     }
 
     protected ENTITY createEntity() {
