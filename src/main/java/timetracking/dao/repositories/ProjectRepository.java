@@ -11,7 +11,7 @@ public interface ProjectRepository extends PagingAndSortingRepository<Project, L
 
     @Override
     @PreAuthorize("principal.id == #entity.user.id or hasAuthority('ADMIN')")
-    Project save(@P("entity") Project entity);
+    <S extends Project> S save(@P("entity") S entity);
 
     Boolean existsByName(@Param("name") String name);
 
