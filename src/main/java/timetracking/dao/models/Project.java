@@ -25,8 +25,12 @@ public class Project extends AbstractEntity {
 
     @Exclude
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "user_projects", joinColumns = {@JoinColumn(name = "project_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @JoinTable(name = "user_projects", joinColumns = {
+            @JoinColumn(name = "project_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "user_id")
+            }
+    )
     private List<User> users;
 
     @Exclude
